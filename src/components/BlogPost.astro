@@ -1,0 +1,14 @@
+---
+const { title, url, pubDate } = Astro.props;
+const formattedDate = (date) => {
+  const dateObject = new Date(date);
+
+  const year = dateObject.getFullYear();
+  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // 月は0から始まるので +1
+  const day = String(dateObject.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+---
+
+<li><a href={url}>{formattedDate(pubDate)} {title}</a></li>
